@@ -16,7 +16,9 @@ func main() {
 	fmt.Println(res, err)
 
 	{
-		res, err := c.Users.GetMe()
-		fmt.Println(res, err)
+		res, _ := c.Users.List(100, 0)
+		fmt.Println(res[0])
+
+		fmt.Println(res[0].LinksCount())
 	}
 }

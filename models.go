@@ -23,8 +23,14 @@ type CountModel struct {
 }
 
 type EntityModel struct {
+	client *Client
+
 	Guid    string `json:"guid"`
 	Created Time   `json:"created"`
+}
+
+func (m *EntityModel) hydrate(client *Client) {
+	m.client = client
 }
 
 type UserModel struct {
@@ -47,7 +53,13 @@ type UserLoginModel struct {
 	SessionKey string `json:"session_key"`
 }
 
-type UpdateSelfUserModel struct {
+type UserUpdateModel struct {
+	UserName    string      `json:"username"`
+	Password    string      `json:"password"`
+	Permissions Permissions `json:"permissions"`
+}
+
+type UserUpdateSelfModel struct {
 	UserName        string `json:"username"`
 	CurrentPassword string `json:"current_password"`
 	NewPassword     string `json:"new_password"`
