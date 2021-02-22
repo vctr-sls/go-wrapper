@@ -8,7 +8,7 @@ import (
 
 func main() {
 	c := vctr.NewClient("http://localhost:5000")
-	res, err := c.Login(&vctr.LoginModel{
+	res, err := c.Auth.Login(&vctr.LoginModel{
 		Ident:    "root",
 		Password: "root",
 		Remember: true,

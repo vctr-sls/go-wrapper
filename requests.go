@@ -18,6 +18,11 @@ type requestClient struct {
 
 func newRequestClient(rootEndpoint string, authHeader ...string) (c *requestClient) {
 	c = new(requestClient)
+
+	if !strings.HasPrefix(rootEndpoint, "https://") && !strings.HasPrefix(rootEndpoint, "http://") {
+		rootEndpoint = "https://" + rootEndpoint
+	}
+
 	c.rootEndpoint = strings.TrimSuffix(rootEndpoint, "/")
 	c.client = http.DefaultClient
 	if len(authHeader) > 0 && authHeader[0] != "" {
