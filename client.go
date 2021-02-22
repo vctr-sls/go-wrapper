@@ -7,6 +7,8 @@ type Client struct {
 	Auth *authClient
 	// Users endpoints.
 	Users *userClient
+	// Links endpoints.
+	Links *linksClient
 
 	r *requestClient
 }
@@ -25,6 +27,7 @@ func NewClient(endpoint string, authHeader ...string) (c *Client) {
 
 	c.Auth = &authClient{c}
 	c.Users = &userClient{c}
+	c.Links = &linksClient{c}
 
 	return
 }
