@@ -9,6 +9,8 @@ type Client struct {
 	Users *userClient
 	// Links endpoints.
 	Links *linksClient
+	// API Key endpoints.
+	ApiKey *apikeyClient
 
 	r *requestClient
 }
@@ -28,6 +30,7 @@ func NewClient(endpoint string, authHeader ...string) (c *Client) {
 	c.Auth = &authClient{c}
 	c.Users = &userClient{c}
 	c.Links = &linksClient{c}
+	c.ApiKey = &apikeyClient{c}
 
 	return
 }
